@@ -11,46 +11,40 @@ class _RainState extends State<Rain> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(left: 30.0, top: 20.0, bottom: 20.0),
-          child: Text(
-            "Rain collection",
-            style: TextStyle(color: Colors.white, fontSize: 40.0),
-          ),
-        ),
         Stack(
           children: <Widget>[
-            GestureDetector(
-              onLongPress: () {
-                return AnimatedContainer(
-                  duration: Duration(seconds: 2),
-                  color: Colors.white,
-                );
-              },
-              child: Padding(
-                padding: const EdgeInsets.only(left: 30.0),
-                child: Container(
-                  width: 200.0,
-                  height: 300.0,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black54,
-                          blurRadius: 10.0,
-                          spreadRadius: 5.0,
-                          offset: Offset(5, 5))
-                    ],
-                    borderRadius: BorderRadius.circular(25.0),
-                    image: DecorationImage(
-                      image: AssetImage("images/rain.jpeg"),
-                      fit: BoxFit.cover,
-                    ),
+            Container(
+              margin: EdgeInsets.only(top: 30.0, left: 30.0),
+              width: 200,
+              height: 300,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(25.0),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                        'https://images.pexels.com/photos/1915182/pexels-photo-1915182.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'),
+                    fit: BoxFit.cover,
                   ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black54,
+                      blurRadius: 10.0,
+                      spreadRadius: 5.0,
+                      offset: Offset(5, 5),
+                    )
+                  ]),
+              child: FlatButton(
+                onPressed: () {},
+                highlightColor: Colors.transparent,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25.0)),
+                splashColor: Colors.white.withOpacity(0.5),
+                child: Align(
+                  alignment: Alignment.centerLeft,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Padding(
-                        padding: const EdgeInsets.all(20.0),
+                        padding: EdgeInsets.only(top: 20.0),
                         child: Icon(
                           Icons.bookmark,
                           color: Colors.white,
@@ -58,7 +52,7 @@ class _RainState extends State<Rain> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 80.0, left: 20.0),
+                        padding: EdgeInsets.only(top: 80.0),
                         child: Text(
                           '04',
                           style: TextStyle(
@@ -68,7 +62,7 @@ class _RainState extends State<Rain> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(20.0),
+                        padding: EdgeInsets.only(top: 20.0),
                         child: Text(
                           'Being\nin the rain',
                           style: TextStyle(color: Colors.white, fontSize: 20.0),
@@ -80,7 +74,7 @@ class _RainState extends State<Rain> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 40.0, left: 180.0),
+              padding: const EdgeInsets.only(top: 60.0, left: 180.0),
               child: Container(
                 width: 75.0,
                 height: 75.0,
@@ -110,21 +104,37 @@ class _RainState extends State<Rain> {
           child: Row(
             children: <Widget>[
               Container(
-                width: 75.0,
-                height: 75.0,
+                width: 75,
+                height: 75,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20.0),
-                  boxShadow: [
-                    BoxShadow(
+                    borderRadius: BorderRadius.circular(25.0),
+                    image: DecorationImage(
+                      image: NetworkImage(
+                          'https://images.pexels.com/photos/125510/pexels-photo-125510.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'),
+                      fit: BoxFit.cover,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
                         color: Colors.black54,
                         blurRadius: 10.0,
                         spreadRadius: 5.0,
-                        offset: Offset(5, 5))
-                  ],
-                  image: DecorationImage(
-                      image: NetworkImage(
-                          'https://images.pexels.com/photos/125510/pexels-photo-125510.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'),
-                      fit: BoxFit.cover),
+                        offset: Offset(5, 5),
+                      )
+                    ]),
+                child: FlatButton(
+                  onPressed: () {},
+                  highlightColor: Colors.transparent,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0)),
+                  splashColor: Colors.white.withOpacity(0.5),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Icon(
+                      Icons.play_circle_outline,
+                      color: Colors.white,
+                      size: 40.0,
+                    ),
+                  ),
                 ),
               ),
               Padding(
@@ -153,21 +163,33 @@ class _RainState extends State<Rain> {
           child: Row(
             children: <Widget>[
               Container(
-                width: 75.0,
-                height: 75.0,
+                width: 75,
+                height: 75,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20.0),
-                  boxShadow: [
-                    BoxShadow(
+                    borderRadius: BorderRadius.circular(25.0),
+                    image: DecorationImage(
+                      image: NetworkImage(
+                          'https://images.pexels.com/photos/1523548/pexels-photo-1523548.jpeg?cs=srgb&dl=blur-branch-close-up-1523548.jpg&fm=jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
                         color: Colors.black54,
                         blurRadius: 10.0,
                         spreadRadius: 5.0,
-                        offset: Offset(5, 5))
-                  ],
-                  image: DecorationImage(
-                      image: NetworkImage(
-                          'https://images.pexels.com/photos/1523548/pexels-photo-1523548.jpeg?cs=srgb&dl=blur-branch-close-up-1523548.jpg&fm=jpg'),
-                      fit: BoxFit.cover),
+                        offset: Offset(5, 5),
+                      )
+                    ]),
+                child: FlatButton(
+                  onPressed: () {},
+                  highlightColor: Colors.transparent,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0)),
+                  splashColor: Colors.white.withOpacity(0.5),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: null
+                  ),
                 ),
               ),
               Padding(
@@ -196,21 +218,33 @@ class _RainState extends State<Rain> {
           child: Row(
             children: <Widget>[
               Container(
-                width: 75.0,
-                height: 75.0,
+                width: 75,
+                height: 75,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20.0),
-                  boxShadow: [
-                    BoxShadow(
+                    borderRadius: BorderRadius.circular(25.0),
+                    image: DecorationImage(
+                      image: NetworkImage(
+                          'https://images.pexels.com/photos/1529360/pexels-photo-1529360.jpeg?cs=srgb&dl=blur-close-up-color-1529360.jpg&fm=jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
                         color: Colors.black54,
                         blurRadius: 10.0,
                         spreadRadius: 5.0,
-                        offset: Offset(5, 5))
-                  ],
-                  image: DecorationImage(
-                      image: NetworkImage(
-                          'https://images.pexels.com/photos/1529360/pexels-photo-1529360.jpeg?cs=srgb&dl=blur-close-up-color-1529360.jpg&fm=jpg'),
-                      fit: BoxFit.cover),
+                        offset: Offset(5, 5),
+                      )
+                    ]),
+                child: FlatButton(
+                  onPressed: () {},
+                  highlightColor: Colors.transparent,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0)),
+                  splashColor: Colors.white.withOpacity(0.5),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: null
+                  ),
                 ),
               ),
               Padding(

@@ -37,7 +37,7 @@ class DotsIndicator extends AnimatedWidget {
 
   /// The color of the dots.
   ///
-  /// Defaults to `Colors.white`.
+  /// Defaults to 'Colors.white'.
   final Color color;
 
   // The base size of the dots
@@ -93,24 +93,26 @@ class MyHomePageState extends State<MyHomePage> {
 
   final List<Widget> _pages = <Widget>[Rain(), Forest()];
 
+  double _volume = 0.0;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xFF0F0F0F),
-      body: IconTheme(
-        data: IconThemeData(color: Colors.blueAccent),
-        child: Stack(
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Color(0xFF0F0F0F),
+        appBar: AppBar(
+          title: Text('White Noise'),
+          backgroundColor: Color(0xFF0F0F0F),
+        ),
+        body: Stack(
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 60.0),
-              child: PageView.builder(
-                scrollDirection: Axis.vertical,
-                physics: AlwaysScrollableScrollPhysics(),
-                controller: _controller,
-                itemBuilder: (BuildContext context, int index) {
-                  return _pages[index % _pages.length];
-                },
-              ),
+            PageView.builder(
+              scrollDirection: Axis.vertical,
+              physics: AlwaysScrollableScrollPhysics(),
+              controller: _controller,
+              itemBuilder: (BuildContext context, int index) {
+                return _pages[index % _pages.length];
+              },
             ),
             Positioned(
               top: 0.0,
@@ -136,27 +138,52 @@ class MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Positioned(
-              bottom: 20.0,
-              child: Center(
-                child: Row(
-                  children: <Widget>[
-                    Icon(
-                      Icons.pause_circle_filled,
-                      color: Colors.white,
-                      size: 40.0,
-                    ),
-                    Icon(Icons.skip_previous),
-                    Icon(Icons.skip_next),
-                    Icon(
-                      Icons.shuffle,
-                      color: Colors.white,
-                      size: 30.0,
-                    ),
-                    Icon(Icons.volume_up),
-                  ],
-                ),
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: 100.0,
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(Icons.pause_circle_filled),
+                        color: Colors.white,
+                        focusColor: Colors.blueAccent,
+                        iconSize: 40.0,
+                        onPressed: () {},
+                      ),
+                      Icon(
+                        Icons.skip_previous,
+                        color: Colors.white,
+                      ),
+                      Slider(
+                        value: 0.2,
+                        activeColor: Colors.white,
+                        onChanged: (double value) {},
+                      ),
+                      Icon(
+                        Icons.skip_next,
+                        color: Colors.white,
+                      ),
+                      Icon(
+                        Icons.shuffle,
+                        color: Colors.white,
+                      ),
+                      Icon(
+                        Icons.volume_up,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+                  Text(
+                    'Rain in city - 3.2m',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
               ),
-            )
+            ),
           ],
         ),
       ),
