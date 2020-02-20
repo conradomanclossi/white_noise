@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:math';
 
+
+import 'sea.dart';
 import 'rain.dart';
 import 'forest.dart';
 import 'items/player.dart';
@@ -65,7 +67,7 @@ class MyHomePage extends StatefulWidget {
 class MyHomePageState extends State<MyHomePage> {
   final _controller = PageController();
 
-  final List<Widget> _pages = <Widget>[Rain(), Forest()];
+  final List<Widget> _pages = <Widget>[Sea(), Rain(), Forest()];
 
   @override
   Widget build(BuildContext context) {
