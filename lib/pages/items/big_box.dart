@@ -11,7 +11,7 @@ Widget bigBox(_img, _number, _text, _icon){
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(25.0),
                   image: DecorationImage(
-                    image: NetworkImage(_img),
+                    image: AssetImage(_img),
                     fit: BoxFit.cover,
                   ),
                   boxShadow: [

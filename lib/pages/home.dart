@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:math';
 
-
 import 'sea.dart';
 import 'rain.dart';
 import 'forest.dart';
@@ -23,7 +22,6 @@ class DotsIndicator extends AnimatedWidget {
   final ValueChanged<int> onPageSelected;
 
   final Color color;
-
 
   Widget _buildDot(int index) {
     double selectedness = Curves.easeOut.transform(

@@ -9,14 +9,11 @@ class Forest extends StatefulWidget {
 }
 
 class _ForestState extends State<Forest> {
-  String img1 =
-      'https://images.pexels.com/photos/4827/nature-forest-trees-fog.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260';
-  String img2 =
-      'https://images.pexels.com/photos/957024/forest-trees-perspective-bright-957024.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260';
-  String img3 =
-      'https://images.pexels.com/photos/917494/pexels-photo-917494.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260';
-  String img4 =
-      'https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260';
+  String img1 = 'images/forest_being.jpeg';
+  String img2 = 'images/forest_birds.jpeg';
+  String img3 = 'images/forest_deep.jpeg';
+  String img4 = 'images/forest_lake.jpeg';
+ 
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -9,14 +9,11 @@ class Rain extends StatefulWidget {
 }
 
 class _RainState extends State<Rain> {
-  String img1 =
-      'https://images.pexels.com/photos/1915182/pexels-photo-1915182.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940';
-  String img2 =
-      'https://images.pexels.com/photos/125510/pexels-photo-125510.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940';
-  String img3 =
-      'https://images.pexels.com/photos/1523548/pexels-photo-1523548.jpeg?cs=srgb&dl=blur-branch-close-up-1523548.jpg&fm=jpg';
-  String img4 =
-      'https://images.pexels.com/photos/1529360/pexels-photo-1529360.jpeg?cs=srgb&dl=blur-close-up-color-1529360.jpg&fm=jpg';
+  String img1 = 'images/rain.jpeg';
+  String img2 = 'images/relaxing_rain.jpg';
+  String img3 = 'images/rain_city.jpeg';
+  String img4 = 'images/rain_forest';
+  
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -11,7 +11,7 @@ Widget smallItems(_img, _titulo, _time, [_iconOptional]) {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25.0),
               image: DecorationImage(
-                image: NetworkImage(_img),
+                image: AssetImage(_img),
                 fit: BoxFit.cover,
               ),
               boxShadow: [
