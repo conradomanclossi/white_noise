@@ -20,7 +20,7 @@ class _SeaState extends State<Sea> {
     super.initState();
     pageController = PageController(
       initialPage: 1,
-      viewportFraction: 0.3,
+      viewportFraction: 0.35,
     );
   }
 
@@ -51,14 +51,15 @@ class _SeaState extends State<Sea> {
             child: Stack(
               children: <Widget>[
                 Container(
-                  height: Curves.easeInOut.transform(value) * 200,
+                  padding: EdgeInsets.only(left: Curves.easeInOut.transform(value) * 20),
+                  height: Curves.easeInOut.transform(value) * 250,
                   width: Curves.easeInOut.transform(value) * 200,
                   child: Stack(
                     children: <Widget>[
                       widget,
                       AnimatedOpacity(
                         opacity: index == pageController.page ? 1 : 0,
-                        duration: Duration(seconds: 1),
+                        duration: Duration(milliseconds: 10),
                         child: Stack(
                           children: <Widget>[
                             widget,
