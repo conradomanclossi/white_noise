@@ -1,7 +1,13 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:white_noise/pages/controllers/controller.dart';
 
-Widget bigBox(_img, _number, _text, _icon) {
+Widget bigBox(Song song, int index) {
+  var _img = song.img;
+  var _number = index;
+  var _text = song.text;
+  var _icon = song.icon;
+
   return Stack(
     children: <Widget>[
       Container(
@@ -56,7 +62,7 @@ Widget bigBox(_img, _number, _text, _icon) {
                 Padding(
                   padding: EdgeInsets.only(top: 80.0),
                   child: Text(
-                    _number,
+                    _number.toString(),
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 40.0,
@@ -92,7 +98,11 @@ Widget bigBox(_img, _number, _text, _icon) {
                 ),
               ],
             ),
-            child: _icon),
+            child: Icon(
+              _icon,
+              color: Colors.black54,
+              size: 40.0,
+            )),
       ),
     ],
   );

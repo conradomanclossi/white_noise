@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
+import 'package:white_noise/pages/controllers/controller.dart';
+import 'package:white_noise/pages/page.dart';
 import 'dart:math';
 
-import 'sea.dart';
-import 'rain.dart';
-import 'forest.dart';
 import 'items/player.dart';
 
 class DotsIndicator extends AnimatedWidget {
@@ -57,18 +57,19 @@ class DotsIndicator extends AnimatedWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  State createState() => MyHomePageState();
+  State createState() => HomePageState();
 }
 
-class MyHomePageState extends State<MyHomePage> {
+class HomePageState extends State<HomePage> {
   final _controller = PageController();
-
-  final List<Widget> _pages = <Widget>[Sea(), Rain(), Forest()];
 
   @override
   Widget build(BuildContext context) {
+    final controller = Provider.of<Controller>(context);
+    List keysList = controller.keysList;
+
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Color(0xFF0F0F0F),
@@ -79,13 +80,15 @@ class MyHomePageState extends State<MyHomePage> {
         body: Stack(
           children: <Widget>[
             PageView.builder(
-              scrollDirection: Axis.vertical,
-              physics: AlwaysScrollableScrollPhysics(),
-              controller: _controller,
-              itemBuilder: (BuildContext context, int index) {
-                return _pages[index % _pages.length];
-              },
-            ),
+                scrollDirection: Axis.vertical,
+                physics: AlwaysScrollableScrollPhysics(),
+                controller: _controller,
+                itemCount: keysList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  var item = keysList[index];
+                  return Pages(controller.songsList(item));
+                },
+              ),
             Positioned(
               top: 0.0,
               bottom: 0.0,
@@ -95,17 +98,17 @@ class MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.all(20.0),
                 child: RotatedBox(
                   quarterTurns: 1,
-                  child: DotsIndicator(
-                    controller: _controller,
-                    itemCount: _pages.length,
-                    onPageSelected: (int page) {
-                      _controller.animateToPage(
-                        page,
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.ease,
-                      );
-                    },
-                  ),
+                  child:DotsIndicator(
+                      controller: _controller,
+                      itemCount: keysList.length,
+                      onPageSelected: (int page) {
+                        _controller.animateToPage(
+                          page,
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.ease,
+                        );
+                      },
+                    )
                 ),
               ),
             ),

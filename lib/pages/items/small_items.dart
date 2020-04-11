@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:white_noise/pages/controllers/controller.dart';
 
-Widget smallItems(_img, _titulo, _time, [_iconOptional]) {
+Widget smallItems(Song song) {
+  var _img = song.img;
+  var _titulo = song.text;
+  var _time = song.time;
+  var _iconOptional = song.icon;
   return Padding(
     padding: const EdgeInsets.only(top: 30.0, left: 30.0),
     child: Row(
@@ -28,7 +33,11 @@ Widget smallItems(_img, _titulo, _time, [_iconOptional]) {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(25.0)),
             splashColor: Colors.white.withOpacity(0.5),
-            child: _iconOptional,
+            child: Icon(
+              _iconOptional,
+              color: Colors.white,
+              size: 40.0,
+            ),
           ),
         ),
         Padding(
@@ -51,13 +60,5 @@ Widget smallItems(_img, _titulo, _time, [_iconOptional]) {
         ),
       ],
     ),
-  );
-}
-
-Widget playIcon() {
-  return Icon(
-    Icons.play_circle_outline,
-    color: Colors.white,
-    size: 40.0,
   );
 }
