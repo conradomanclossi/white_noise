@@ -1,86 +1,156 @@
-import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
+import 'song_controller.dart';
 
 part 'controller.g.dart';
 
 class Controller = _ControllerBase with _$Controller;
 
-class Song {
-  String img;
-  String text;
-  double time;
-  String classElement;
-  IconData icon;
-
-  Song(this.img, this.text, this.time, this.classElement);
-
-  defineIcon() {
-    if (classElement == "rain") {
-      return icon = Icons.cloud;
-    } else if (classElement == "forest") {
-      return icon = Icons.terrain;
-    } else if (classElement == "sea") {
-      return icon = Icons.brightness_low;
-    }
-  }
-
-  Song.fromJson(Map<String, dynamic> json)
-      : img = json["img"],
-        text = json["text"],
-        time = json["time"],
-        classElement = json["classElement"],
-        icon = json["icon"];
-
-  // json["icon"];
-
-  Map<String, dynamic> toJson() => {
-        "img": img,
-        "text": text,
-        "time": time,
-        "classElement": classElement,
-        "icon": icon
-      };
-
-  @override
-  String toString() {
-    return "Song(img: $img, text: $text, time: $time, classElement: $classElement, icon: $icon)";
-  }
-}
-
 abstract class _ControllerBase with Store {
+  // Songs List
   @observable
-  Map songs = {
-    "Rain": [
-      Song("images/rain.jpeg", "Being in the rain", 3.5, "rain"),
-      Song("images/relaxing_rain.jpg", "Rain in city", 3.25, "rain"),
-      Song("images/rain_city.jpeg", "Rain in forest", 4.5, "rain"),
-      Song("images/rain_forest.jpg", "Relaxing rain", 2.1, "rain")
-    ],
-    "Forest": [
-      Song("images/forest_being.jpeg", "Being in the forest", 4.3, "forest"),
-      Song("images/forest_birds.jpeg", "Deep in forest", 5.2, "forest"),
-      Song("images/forest_deep.jpeg", "Forest and bird's", 4.5, "forest"),
-      Song(
-          "images/forest_lake.jpeg", "Relaxing forest and lake", 2.1, "forest"),
-    ],
-    "Sea": [
-      Song("images/sea.jpg", "Being in the rain", 7.1, "sea"),
-      Song("images/sea_deep.jpg", "Rain in city", 3.2, "sea"),
-      Song("images/sea_relax.jpg", "Rain in forest", 4.5, "sea"),
-      Song("images/sea_waves.jpg", "Relaxing rain", 2.1, "sea")
-    ]
-  };
+  ObservableList<Song> songs = [
+    Song(
+        img: "images/rain.jpeg",
+        text: "Being in the rain",
+        time: 3.5,
+        classElement: "rain"),
+    Song(
+        img: "images/relaxing_rain.jpg",
+        text: "Rain in city",
+        time: 3.25,
+        classElement: "rain"),
+    Song(
+        img: "images/rain_city.jpeg",
+        text: "Rain in forest",
+        time: 4.5,
+        classElement: "rain"),
+    Song(
+        img: "images/rain_forest.jpg",
+        text: "Relaxing rain",
+        time: 2.1,
+        classElement: "rain"),
+    Song(
+        img: "images/forest_being.jpeg",
+        text: "Being in the forest",
+        time: 4.3,
+        classElement: "forest"),
+    Song(
+        img: "images/forest_birds.jpeg",
+        text: "Deep in forest",
+        time: 5.2,
+        classElement: "forest"),
+    Song(
+        img: "images/forest_deep.jpeg",
+        text: "Forest and bird's",
+        time: 4.5,
+        classElement: "forest"),
+    Song(
+        img: "images/forest_lake.jpeg",
+        text: "Relaxing forest",
+        time: 2.1,
+        classElement: "forest"),
+    Song(
+        img: "images/sea.jpg",
+        text: "Being in the rain",
+        time: 7.1,
+        classElement: "sea"),
+    Song(
+        img: "images/sea_deep.jpg",
+        text: "Rain in city",
+        time: 3.2,
+        classElement: "sea"),
+    Song(
+        img: "images/sea_relax.jpg",
+        text: "Rain in forest",
+        time: 4.5,
+        classElement: "sea"),
+    Song(
+        img: "images/sea_waves.jpg",
+        text: "Relaxing rain",
+        time: 2.1,
+        classElement: "sea"),
+  ].asObservable();
 
   @computed
-  List get keysList {
-    return songs.keys.toList();
+  ObservableList<String> get getClassElementList {
+    ObservableList<String> _list = ObservableList<String>();
+    songs.forEach((element) {
+      _list.add(element.classElement.toString());
+    });
+    return _list.toSet().toList().asObservable();
   }
 
   @action
-  songsList(String value) {
-    return songs[value];
+  ObservableList<Song> filterSongForClass(String filter) {
+    ObservableList<Song> _list = ObservableList<Song>().asObservable();
+    songs.forEach((element) {
+      if (element.classElement == filter) {
+        _list.add(element);
+      }
+    });
+    return _list;
   }
 
-  //TODO: make the bookmark
-  //TODO: Theme changer
+  // Bookmark Song
+  @observable
+  ObservableList<Song> bookmarksSongs = ObservableList<Song>();
+
+  @action
+  defineBookmark(Song value) {
+    // Icon
+    songs.forEach((element) {
+      if (element.classElement == value.classElement) {
+        if (element == value) {
+          element.bookmark = true;
+        } else {
+          element.bookmark = false;
+        }
+      }
+    });
+
+    // List add or remove
+    bookmarksSongs.removeWhere((element) {
+      return element.classElement == value.classElement;
+    });
+    bookmarksSongs.add(value);
+  }
+
+  @action
+  newDefineBookmark(Song song) {
+    songs.forEach((element) {
+      if (element.classElement == song.classElement) {
+        if (element == song) {
+          element.bookmark = true;
+        } else {
+          element.bookmark = false;
+        }
+      }
+    });
+  }
+
+  @action
+  removeBookmark(Song value) {
+    bookmarksSongs.remove(value);
+
+    // Icon
+    songs.forEach((element) {
+      if (element.classElement == value.classElement) {
+        element.bookmark = false;
+      }
+    });
+  }
+
+  // Player
+  @observable
+  String inPlayerWitheSong;
+
+  @action
+  setWhiteNoise(Song song) => inPlayerWitheSong = "${song.text} - ${song.time}";
+
+  @action
+  bookmark(String classElement) {
+    return bookmarksSongs.where((element) {
+      return element.classElement == classElement;
+    });
+  }
 }

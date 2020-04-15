@@ -1,5 +1,6 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
+import 'dart:async';
+
 class Animator extends StatefulWidget {
   final Widget child;
   final Duration time;
@@ -7,6 +8,7 @@ class Animator extends StatefulWidget {
   @override
   _AnimatorState createState() => _AnimatorState();
 }
+
 class _AnimatorState extends State<Animator>
     with SingleTickerProviderStateMixin {
   Timer timer;
@@ -21,12 +23,14 @@ class _AnimatorState extends State<Animator>
         CurvedAnimation(parent: animationController, curve: Curves.easeInOut);
     timer = Timer(widget.time, animationController.forward);
   }
+
   @override
   void dispose() {
     super.dispose();
     timer.cancel();
     animationController.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
@@ -44,6 +48,7 @@ class _AnimatorState extends State<Animator>
     );
   }
 }
+
 Timer timer;
 Duration duration = Duration();
 wait() {
@@ -55,6 +60,7 @@ wait() {
   duration += Duration(milliseconds: 100);
   return duration;
 }
+
 class WidgetANimator extends StatelessWidget {
   final Widget child;
   WidgetANimator(this.child);
