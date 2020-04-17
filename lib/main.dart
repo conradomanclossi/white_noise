@@ -1,9 +1,11 @@
+// Packages
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+// Controllers
+import 'controllers/controller.dart';
+import 'controllers/song_controller.dart';
+import 'controllers/theme.dart';
 // Pages
-import 'pages/items/theme.dart';
-import 'pages/controllers/controller.dart';
-import 'pages/controllers/song_controller.dart';
 import 'pages/home.dart';
 
 void main() => runApp(App());

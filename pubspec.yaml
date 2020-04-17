@@ -26,7 +26,6 @@ dependencies:
   provider:
   mobx:
   flutter_mobx:
-  path_provider:
 
 dev_dependencies:
   flutter_test:

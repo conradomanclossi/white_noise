@@ -116,19 +116,6 @@ abstract class _ControllerBase with Store {
   }
 
   @action
-  newDefineBookmark(Song song) {
-    songs.forEach((element) {
-      if (element.classElement == song.classElement) {
-        if (element == song) {
-          element.bookmark = true;
-        } else {
-          element.bookmark = false;
-        }
-      }
-    });
-  }
-
-  @action
   removeBookmark(Song value) {
     bookmarksSongs.remove(value);
 
@@ -142,15 +129,9 @@ abstract class _ControllerBase with Store {
 
   // Player
   @observable
-  String inPlayerWitheSong;
+  String inPlayer;
 
   @action
-  setWhiteNoise(Song song) => inPlayerWitheSong = "${song.text} - ${song.time}";
-
-  @action
-  bookmark(String classElement) {
-    return bookmarksSongs.where((element) {
-      return element.classElement == classElement;
-    });
-  }
+  setPlayerSong(Song song) => inPlayer = "${song.text} - ${song.time}";
 }
+ 

@@ -51,22 +51,21 @@ mixin _$Controller on _ControllerBase, Store {
     }, _$bookmarksSongsAtom, name: '${_$bookmarksSongsAtom.name}_set');
   }
 
-  final _$inPlayerWitheSongAtom =
-      Atom(name: '_ControllerBase.inPlayerWitheSong');
+  final _$inPlayerAtom = Atom(name: '_ControllerBase.inPlayer');
 
   @override
-  String get inPlayerWitheSong {
-    _$inPlayerWitheSongAtom.context.enforceReadPolicy(_$inPlayerWitheSongAtom);
-    _$inPlayerWitheSongAtom.reportObserved();
-    return super.inPlayerWitheSong;
+  String get inPlayer {
+    _$inPlayerAtom.context.enforceReadPolicy(_$inPlayerAtom);
+    _$inPlayerAtom.reportObserved();
+    return super.inPlayer;
   }
 
   @override
-  set inPlayerWitheSong(String value) {
-    _$inPlayerWitheSongAtom.context.conditionallyRunInAction(() {
-      super.inPlayerWitheSong = value;
-      _$inPlayerWitheSongAtom.reportChanged();
-    }, _$inPlayerWitheSongAtom, name: '${_$inPlayerWitheSongAtom.name}_set');
+  set inPlayer(String value) {
+    _$inPlayerAtom.context.conditionallyRunInAction(() {
+      super.inPlayer = value;
+      _$inPlayerAtom.reportChanged();
+    }, _$inPlayerAtom, name: '${_$inPlayerAtom.name}_set');
   }
 
   final _$_ControllerBaseActionController =
@@ -93,16 +92,6 @@ mixin _$Controller on _ControllerBase, Store {
   }
 
   @override
-  dynamic newDefineBookmark(Song song) {
-    final _$actionInfo = _$_ControllerBaseActionController.startAction();
-    try {
-      return super.newDefineBookmark(song);
-    } finally {
-      _$_ControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   dynamic removeBookmark(Song value) {
     final _$actionInfo = _$_ControllerBaseActionController.startAction();
     try {
@@ -113,20 +102,10 @@ mixin _$Controller on _ControllerBase, Store {
   }
 
   @override
-  dynamic setWhiteNoise(Song song) {
+  dynamic setPlayerSong(Song song) {
     final _$actionInfo = _$_ControllerBaseActionController.startAction();
     try {
-      return super.setWhiteNoise(song);
-    } finally {
-      _$_ControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic bookmark(String classElement) {
-    final _$actionInfo = _$_ControllerBaseActionController.startAction();
-    try {
-      return super.bookmark(classElement);
+      return super.setPlayerSong(song);
     } finally {
       _$_ControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -135,7 +114,7 @@ mixin _$Controller on _ControllerBase, Store {
   @override
   String toString() {
     final string =
-        'songs: ${songs.toString()},bookmarksSongs: ${bookmarksSongs.toString()},inPlayerWitheSong: ${inPlayerWitheSong.toString()},getClassElementList: ${getClassElementList.toString()}';
+        'songs: ${songs.toString()},bookmarksSongs: ${bookmarksSongs.toString()},inPlayer: ${inPlayer.toString()},getClassElementList: ${getClassElementList.toString()}';
     return '{$string}';
   }
 }

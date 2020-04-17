@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:white_noise/pages/controllers/controller.dart';
-import 'package:white_noise/pages/controllers/song_controller.dart';
+import 'package:white_noise/controllers/controller.dart';
+import 'package:white_noise/controllers/song_controller.dart';
 
 class BigBox extends StatelessWidget {
   final Song song;
@@ -37,7 +37,7 @@ class BigBox extends StatelessWidget {
                 ]),
             child: FlatButton(
               onPressed: () {
-                controller.setWhiteNoise(song);
+                controller.setPlayerSong(song);
               },
               highlightColor: Colors.transparent,
               shape: RoundedRectangleBorder(

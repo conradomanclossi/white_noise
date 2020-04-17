@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:white_noise/pages/controllers/controller.dart';
+import 'package:white_noise/controllers/controller.dart';
 
 class Player extends StatelessWidget {
   @override
@@ -55,11 +55,7 @@ class Player extends StatelessWidget {
                   inactiveColor: Colors.amberAccent,
                 ),
                 Observer(builder: (_) {
-                  return Text(
-                    controller.inPlayerWitheSong != null
-                        ? "${controller.inPlayerWitheSong} m"
-                        : '',
-                  );
+                  return Text("${controller.inPlayer}m");
                 }),
               ],
             ),
@@ -69,7 +65,7 @@ class Player extends StatelessWidget {
             focusColor: Colors.deepOrangeAccent,
             iconSize: 40.0,
             onPressed: () {
-              controller.inPlayerWitheSong = null;
+              controller.inPlayer = null;
             },
           )
         ],

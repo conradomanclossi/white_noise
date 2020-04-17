@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
+import 'package:white_noise/controllers/controller.dart';
 import 'package:white_noise/pages/items/big_box.dart';
 import 'package:white_noise/pages/items/small_items.dart';
-import 'controllers/controller.dart';
 
 class Pages extends StatelessWidget {
   final String classElement;

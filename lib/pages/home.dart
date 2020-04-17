@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:white_noise/pages/controllers/controller.dart';
-import 'package:white_noise/pages/items/theme.dart';
+import 'package:white_noise/controllers/controller.dart';
+import 'package:white_noise/controllers/theme.dart';
 import 'package:white_noise/pages/page.dart';
 import 'dart:math';
 
@@ -145,7 +145,7 @@ class HomePageState extends State<HomePage> {
 
                     // Player
                     Observer(builder: (_) {
-                      return controller.inPlayerWitheSong != null
+                      return controller.inPlayer != null
                           ? Align(
                               alignment: Alignment.bottomCenter,
                               child: Player(),
